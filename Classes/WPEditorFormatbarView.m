@@ -21,7 +21,7 @@ const CGFloat WPEditorFormatbarViewToolbarHeight = 44;
 @property (unsafe_unretained, nonatomic) IBOutlet ZSSBarButtonItem *unorderedListButton;
 @property (unsafe_unretained, nonatomic) IBOutlet ZSSBarButtonItem *orderedListButton;
 @property (unsafe_unretained, nonatomic) IBOutlet ZSSBarButtonItem *linkButton;
-@property (unsafe_unretained, nonatomic) IBOutlet ZSSBarButtonItem *htmlButton;
+@property (unsafe_unretained, nonatomic) IBOutlet ZSSBarButtonItem *doneButton;
 
 // Regular size class bar button items
 @property (unsafe_unretained, nonatomic) IBOutlet ZSSBarButtonItem *imageRegularButton;
@@ -79,7 +79,8 @@ const CGFloat WPEditorFormatbarViewToolbarHeight = 44;
     [self initOrderedListBarButton];
     [self initUnorderedListBarButton];
     [self initStrikeThroughBarButton];
-    [self initShowSourceBarButton];
+//    [self initShowSourceBarButton];
+    [self initDoneBarButton];
 }
 
 - (void)buildBorders
@@ -150,14 +151,14 @@ const CGFloat WPEditorFormatbarViewToolbarHeight = 44;
         }
     }
     
-    if (self.htmlButton) {
-        WPEditorToolbarButton* wpEditorHtmlButton = (WPEditorToolbarButton*)self.htmlButton.customView;
-        NSAssert([wpEditorHtmlButton isKindOfClass:[WPEditorToolbarButton class]],
-                 @"Expected to have an HTML button of class WPEditorToolbarButton here.");
-        
-        wpEditorHtmlButton.normalTintColor = itemTintColor;
-        self.htmlButton.tintColor = itemTintColor;
-    }
+//    if (self.htmlButton) {
+//        WPEditorToolbarButton* wpEditorHtmlButton = (WPEditorToolbarButton*)self.htmlButton.customView;
+//        NSAssert([wpEditorHtmlButton isKindOfClass:[WPEditorToolbarButton class]],
+//                 @"Expected to have an HTML button of class WPEditorToolbarButton here.");
+//
+//        wpEditorHtmlButton.normalTintColor = itemTintColor;
+//        self.htmlButton.tintColor = itemTintColor;
+//    }
 }
 
 - (void)setDisabledItemTintColor:(UIColor *)disabledItemTintColor
@@ -199,13 +200,13 @@ const CGFloat WPEditorFormatbarViewToolbarHeight = 44;
         }
     }
     
-    if (self.htmlButton) {
-        WPEditorToolbarButton* htmlButton = (WPEditorToolbarButton*)self.htmlButton.customView;
-        NSAssert([htmlButton isKindOfClass:[WPEditorToolbarButton class]],
-                 @"Expected to have an HTML button of class WPEditorToolbarButton here.");
-        
-        htmlButton.selectedTintColor = _selectedItemTintColor;
-    }
+//    if (self.htmlButton) {
+//        WPEditorToolbarButton* htmlButton = (WPEditorToolbarButton*)self.htmlButton.customView;
+//        NSAssert([htmlButton isKindOfClass:[WPEditorToolbarButton class]],
+//                 @"Expected to have an HTML button of class WPEditorToolbarButton here.");
+//
+//        htmlButton.selectedTintColor = _selectedItemTintColor;
+//    }
 }
 
 #pragma mark - Toolbar items
@@ -533,27 +534,32 @@ const CGFloat WPEditorFormatbarViewToolbarHeight = 44;
          accessibilityLabel:accessibilityLabel];
 }
 
-- (void)initShowSourceBarButton
-{
-    NSString* accessibilityLabel = NSLocalizedString(@"HTML",
-                                                     @"Accessibility label for HTML button on formatting toolbar.");
-    
-    [self initBarButtonItem:self.htmlButton
-                    withTag:kWPEditorViewControllerElementShowSourceBarButton
-               htmlProperty:@"source"
-                  imageName:@"icon_format_html"
-                     target:self
-                   selector:@selector(showHTML:)
-         accessibilityLabel:accessibilityLabel];
-    
-    [self initBarButtonItem:self.htmlRegularButton
-                    withTag:kWPEditorViewControllerElementShowSourceBarButton
-               htmlProperty:@"source"
-                  imageName:@"icon_format_html"
-                     target:self
-                   selector:@selector(showHTML:)
-         accessibilityLabel:accessibilityLabel];
+
+- (void)initDoneBarButton {
+    [self initBarButtonItem:self.doneButton withTag:kWPEditorViewControllerElementTagUnknown htmlProperty:@"" imageName:@"icon_format_keyboard" target:self selector:@selector(done:) accessibilityLabel:@""];
 }
+
+//- (void)initShowSourceBarButton
+//{
+//    NSString* accessibilityLabel = NSLocalizedString(@"HTML",
+//                                                     @"Accessibility label for HTML button on formatting toolbar.");
+//    
+//    [self initBarButtonItem:self.htmlButton
+//                    withTag:kWPEditorViewControllerElementShowSourceBarButton
+//               htmlProperty:@"source"
+//                  imageName:@"icon_format_html"
+//                     target:self
+//                   selector:@selector(showHTML:)
+//         accessibilityLabel:accessibilityLabel];
+//    
+//    [self initBarButtonItem:self.htmlRegularButton
+//                    withTag:kWPEditorViewControllerElementShowSourceBarButton
+//               htmlProperty:@"source"
+//                  imageName:@"icon_format_html"
+//                     target:self
+//                   selector:@selector(showHTML:)
+//         accessibilityLabel:accessibilityLabel];
+//}
 
 - (void)initStrikeThroughBarButton
 {
@@ -611,9 +617,12 @@ const CGFloat WPEditorFormatbarViewToolbarHeight = 44;
     [self.delegate editorToolbarView:self setStrikeThrough:barButtonItem];
 }
 
-- (void)showHTML:(UIBarButtonItem *)barButtonItem
-{
-    [self.delegate editorToolbarView:self showHTMLSource:barButtonItem];
+//- (void)showHTML:(UIBarButtonItem *)barButtonItem
+//{
+//    [self.delegate editorToolbarView:self showHTMLSource:barButtonItem];
+//}
+- (void)done:(UIBarButtonItem *)barButtonItem {
+    [[UIApplication sharedApplication].keyWindow endEditing:YES];
 }
 
 @end

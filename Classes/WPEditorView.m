@@ -1420,38 +1420,38 @@ shouldStartLoadWithRequest:(NSURLRequest *)request
  */
 - (void)scrollToCaretAnimated:(BOOL)animated
 {
-    BOOL notEnoughInfoToScroll = self.caretYOffset == nil || self.lineHeight == nil;
-    
-    if (notEnoughInfoToScroll) {
-        return;
-    }
-    
-    CGRect viewport = [self viewport];
-    CGFloat caretYOffset = [self.caretYOffset floatValue];
-    CGFloat lineHeight = [self.lineHeight floatValue];
-    CGFloat offsetBottom = caretYOffset + lineHeight;
-    
-    BOOL mustScroll = (caretYOffset < viewport.origin.y
-                       || offsetBottom > viewport.origin.y + CGRectGetHeight(viewport));
-    
-    if (mustScroll) {
-        // DRM: by reducing the necessary height we avoid an issue that moves the caret out
-        // of view.
-        //
-        CGFloat necessaryHeight = viewport.size.height / 2;
-        
-        // DRM: just make sure we don't go out of bounds with the desired yOffset.
-        //
-        caretYOffset = MIN(caretYOffset,
-                           self.webView.scrollView.contentSize.height - necessaryHeight);
-        
-        CGRect targetRect = CGRectMake(0.0f,
-                                       caretYOffset,
-                                       CGRectGetWidth(viewport),
-                                       necessaryHeight);
-        
-        [self.webView.scrollView scrollRectToVisible:targetRect animated:animated];
-    }
+//    BOOL notEnoughInfoToScroll = self.caretYOffset == nil || self.lineHeight == nil;
+//
+//    if (notEnoughInfoToScroll) {
+//        return;
+//    }
+//
+//    CGRect viewport = [self viewport];
+//    CGFloat caretYOffset = [self.caretYOffset floatValue];
+//    CGFloat lineHeight = [self.lineHeight floatValue];
+//    CGFloat offsetBottom = caretYOffset + lineHeight;
+//
+//    BOOL mustScroll = (caretYOffset < viewport.origin.y
+//                       || offsetBottom > viewport.origin.y + CGRectGetHeight(viewport));
+//
+//    if (mustScroll) {
+//        // DRM: by reducing the necessary height we avoid an issue that moves the caret out
+//        // of view.
+//        //
+//        CGFloat necessaryHeight = viewport.size.height / 2;
+//
+//        // DRM: just make sure we don't go out of bounds with the desired yOffset.
+//        //
+//        caretYOffset = MIN(caretYOffset,
+//                           self.webView.scrollView.contentSize.height - necessaryHeight);
+//
+//        CGRect targetRect = CGRectMake(0.0f,
+//                                       caretYOffset,
+//                                       CGRectGetWidth(viewport),
+//                                       necessaryHeight);
+//
+//        [self.webView.scrollView scrollRectToVisible:targetRect animated:animated];
+//    }
 }
 
 #pragma mark - Selection

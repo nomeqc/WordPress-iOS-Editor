@@ -136,7 +136,7 @@ static NSString* const kWPEditorFieldJavascriptTrue = @"true";
 - (NSString*)html
 {
     NSString* html = nil;
-    
+
     if (!self.domLoaded) {
         html = self.preloadedHTML;
     } else {

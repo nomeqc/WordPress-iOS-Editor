@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -66,7 +66,7 @@
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="AxR-HN-bG5"/>
                         <barButtonItem title="Li" width="44" style="plain" id="9hH-p8-Ocr" customClass="ZSSBarButtonItem"/>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="bqO-yZ-MVf"/>
-                        <barButtonItem title="HTML" width="44" style="plain" id="tE5-OT-rCk" customClass="ZSSBarButtonItem"/>
+                        <barButtonItem title="Done" width="44" style="plain" id="tE5-OT-rCk" customClass="ZSSBarButtonItem"/>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="KpA-gG-9xb"/>
                     </items>
                 </toolbar>
@@ -164,8 +164,8 @@
             <connections>
                 <outlet property="boldButton" destination="UaL-xN-YGn" id="OPT-PS-sNb"/>
                 <outlet property="boldRegularButton" destination="HCj-w0-6sG" id="ITL-Qa-VCX"/>
+                <outlet property="doneButton" destination="tE5-OT-rCk" id="4SS-Tc-bt1"/>
                 <outlet property="horizontalBorder" destination="5oj-N8-CBI" id="5yq-QA-5ve"/>
-                <outlet property="htmlButton" destination="tE5-OT-rCk" id="szj-xW-Kva"/>
                 <outlet property="htmlRegularButton" destination="xVr-Zr-pE2" id="Vks-1L-dvL"/>
                 <outlet property="imageButton" destination="IvH-tE-Dmv" id="vb0-UY-3LW"/>
                 <outlet property="imageRegularButton" destination="R46-ah-aBg" id="vET-I5-9Rr"/>

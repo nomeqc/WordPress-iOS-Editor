@@ -825,10 +825,11 @@ ZSSEditor.insertLocalImage = function(imageNodeIdentifier, localImageUrl) {
             image.setAttribute("data-wpid", imageNodeIdentifier);
             image.src = localImageUrl;
             image.alt = "";
-
+            
+   
             span.appendChild(progress);
             span.appendChild(image);
-
+            
             range = sel.getRangeAt(0);
             range.insertNode(span);
 
